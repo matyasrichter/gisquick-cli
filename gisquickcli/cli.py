@@ -292,7 +292,8 @@ def create(name, server_url, publish_dir, cadvisor, node_exporter, accounts, dev
 
     create_env_file(os.path.join(name, ".env"), {
         "SECRET_KEY": quote_string(generate_password(50)),
-        "SERVER_URL": server_url
+        "SERVER_URL": server_url,
+        "PROCESSING_SECRET": secrets.token_urlsafe(32)
     })
     click.secho('Created ".env" file for the global settings', fg="yellow")
 
